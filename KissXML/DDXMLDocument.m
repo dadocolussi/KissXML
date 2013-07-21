@@ -101,6 +101,27 @@
 	return [self initWithDocPrimitive:doc owner:nil];
 }
 
+- (id)initWithRootElement:(DDXMLElement *)element;
+{
+	if (element == nil)
+	{
+		[super dealloc];
+		return nil;
+	}
+	
+	xmlDocPtr doc = xmlNewDoc((const xmlChar *)"1.0");
+	if (doc == NULL)
+	{
+		[super dealloc];
+		return nil;
+	}
+	
+	xmlNodePtr primitive = [element primitive];
+	xmlDocSetRootElement(doc, primitive);
+	[element setOwner:self];
+	return [self initWithDocPrimitive:doc owner:nil];
+}
+
 /**
  * Returns the root element of the receiver.
 **/

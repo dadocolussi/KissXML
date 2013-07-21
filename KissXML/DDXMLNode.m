@@ -382,6 +382,13 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 #pragma mark Properties
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+- (void)setOwner:(DDXMLNode *)o;
+{
+	NSAssert(owner == nil, @"Cannot reset owner");
+	owner = [o retain];
+}
+
 - (DDXMLNodeKind)kind
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
@@ -1962,6 +1969,11 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 	{
 		return nil;
 	}
+}
+
+- (void *)primitive
+{
+	return genericPtr;
 }
 
 static void MyErrorHandler(void * userData, xmlErrorPtr error)
