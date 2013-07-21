@@ -1129,6 +1129,32 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 	return prefix;
 }
 
++ (DDXMLNode *)predefinedNamespaceForPrefix:(NSString *)name;
+{
+	if ([name isEqualToString:@"xml"])
+    {
+		return [self namespaceWithName:@"xml" stringValue:@"http://www.w3.org/XML/1998/namespace"];
+    }
+	else if ([name isEqualToString:@"xs"])
+    {
+		return [self namespaceWithName:@"xs" stringValue:@"http://www.w3.org/2001/XMLSchema"];
+    }
+	else if ([name isEqualToString:@"xsd"])
+    {
+		return [self namespaceWithName:@"xsd" stringValue:@"http://www.w3.org/2001/XMLSchema"];
+    }
+	else if ([name isEqualToString:@"xsi"])
+    {
+		return [self namespaceWithName:@"xsi" stringValue:@"http://www.w3.org/2001/XMLSchema-instance"];
+    }
+	else if ([name isEqualToString:@"fn"])
+    {
+		return [self namespaceWithName:@"fn" stringValue:@"http://www.w3.org/2005/xpath-functions"];
+    }
+	
+	return nil;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Output
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -139,7 +139,7 @@ enum {
 
 + (NSString *)localNameForName:(NSString *)name;
 + (NSString *)prefixForName:(NSString *)name;
-//+ (DDXMLNode *)predefinedNamespaceForPrefix:(NSString *)name;
++ (DDXMLNode *)predefinedNamespaceForPrefix:(NSString *)name;
 
 #pragma mark --- Output ---
 
