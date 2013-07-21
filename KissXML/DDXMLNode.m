@@ -74,6 +74,11 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 	});
 }
 
++ (id)documentWithRootElement:(DDXMLElement *)element
+{
+	return [[[DDXMLDocument alloc] initWithRootElement:element] autorelease];
+}
+
 + (id)elementWithName:(NSString *)name
 {
 	return [[[DDXMLElement alloc] initWithName:name] autorelease];

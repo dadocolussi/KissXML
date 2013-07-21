@@ -48,6 +48,7 @@ enum {
 
 //extern struct _xmlKind;
 
+@class DDXMLElement;
 
 @interface DDXMLNode : NSObject <NSCopying>
 {
@@ -67,7 +68,7 @@ enum {
 
 //+ (id)document;
 
-//+ (id)documentWithRootElement:(DDXMLElement *)element;
++ (id)documentWithRootElement:(DDXMLElement *)element;
 
 + (id)elementWithName:(NSString *)name;
 
