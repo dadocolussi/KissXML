@@ -79,6 +79,6 @@ typedef NSUInteger DDXMLDocumentContentKind;
 //- (id)objectByApplyingXSLTString:(NSString *)xslt arguments:(NSDictionary *)arguments error:(NSError **)error;
 //- (id)objectByApplyingXSLTAtURL:(NSURL *)xsltURL arguments:(NSDictionary *)argument error:(NSError **)error;
 
-//- (BOOL)validateAndReturnError:(NSError **)error;
+- (BOOL)validateAndReturnError:(NSError **)error;
 
 @end
