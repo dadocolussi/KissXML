@@ -42,6 +42,7 @@ enum {
 	DDXMLNodeOptionsNone            = 0,
 	DDXMLNodeExpandEmptyElement     = 1 << 1,
 	DDXMLNodeCompactEmptyElement    = 1 << 2,
+	DDXMLDocumentValidate           = 1 << 13,
 	DDXMLNodePrettyPrint            = 1 << 17,
 };
 

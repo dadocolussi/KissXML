@@ -103,7 +103,15 @@
 		return nil;
 	}
 	
-	return [self initWithDocPrimitive:doc owner:nil];
+	self = [self initWithDocPrimitive:doc owner:nil];
+	
+	if (mask & DDXMLDocumentValidate && ![self validateAndReturnError:error])
+	{
+		[self release];
+		return nil;
+	}
+	
+	return self;
 }
 
 - (id)initWithRootElement:(DDXMLElement *)element;
@@ -235,6 +243,12 @@ int is_valid(const xmlDocPtr doc, const char *schema_filename)
 	if (schemaLocation != nil)
 	{
 		[[self rootElement] addAttribute:schemaLocation];
+	}
+	
+	if (!isValid)
+	{
+		NSError *e = [DDXMLNode lastError];
+		*error = e;
 	}
 	
 	return isValid;

@@ -92,6 +92,9 @@
 #ifndef NSXMLNodePrettyPrint
   #define NSXMLNodePrettyPrint DDXMLNodePrettyPrint
 #endif
+#ifndef NSXMLDocumentValidate
+#define NSXMLDocumentValidate DDXMLDocumentValidate
+#endif
 
 #endif // #if TARGET_OS_IPHONE
 
