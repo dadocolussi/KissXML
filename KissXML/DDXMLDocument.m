@@ -245,7 +245,7 @@ int is_valid(const xmlDocPtr doc, const char *schema_filename)
 		[[self rootElement] addAttribute:schemaLocation];
 	}
 	
-	if (!isValid)
+	if (!isValid && error != NULL)
 	{
 		NSError *e = [DDXMLNode lastError];
 		*error = e;
