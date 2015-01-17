@@ -1,10 +1,13 @@
-#import "DDXMLPrivate.h"
-#import "NSString+DDXML.h"
-
 #import <libxml/parser.h>
 #import <libxml/valid.h>
 #import <libxml/xmlschemas.h>
 
+#import "DDXMLPrivate.h"
+#import "NSString+DDXML.h"
+
+#if ! __has_feature(objc_arc)
+#warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
+#endif
 
 /**
  * Welcome to KissXML.
@@ -32,7 +35,7 @@
 **/
 + (id)nodeWithDocPrimitive:(xmlDocPtr)doc owner:(DDXMLNode *)owner
 {
-	return [[[DDXMLDocument alloc] initWithDocPrimitive:doc owner:owner] autorelease];
+	return [[DDXMLDocument alloc] initWithDocPrimitive:doc owner:owner];
 }
 
 - (id)initWithDocPrimitive:(xmlDocPtr)doc owner:(DDXMLNode *)inOwner
@@ -54,7 +57,6 @@
 	// Promote initializers which use proper parameter types to enable compiler to catch more mistakes.
 	NSAssert(NO, @"Use initWithDocPrimitive:owner:");
 	
-	[self release];
 	return nil;
 }
 
@@ -83,7 +85,6 @@
 	{
 		if (error) *error = [NSError errorWithDomain:@"DDXMLErrorDomain" code:0 userInfo:nil];
 		
-		[self release];
 		return nil;
 	}
 	
@@ -99,7 +100,6 @@
 	{
 		if (error) *error = [NSError errorWithDomain:@"DDXMLErrorDomain" code:1 userInfo:nil];
 		
-		[self release];
 		return nil;
 	}
 	
