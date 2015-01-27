@@ -80,7 +80,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 
 + (id)documentWithRootElement:(DDXMLElement *)element
 {
-	return [[[DDXMLDocument alloc] initWithRootElement:element] autorelease];
+	return [[DDXMLDocument alloc] initWithRootElement:element];
 }
 
 + (id)elementWithName:(NSString *)name
@@ -391,7 +391,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 - (void)setOwner:(DDXMLNode *)o;
 {
 	NSAssert(owner == nil, @"Cannot reset owner");
-	owner = [o retain];
+	owner = o;
 }
 
 - (DDXMLNodeKind)kind

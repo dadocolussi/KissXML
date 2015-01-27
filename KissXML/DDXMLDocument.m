@@ -107,7 +107,6 @@
 	
 	if (mask & DDXMLDocumentValidate && ![self validateAndReturnError:error])
 	{
-		[self release];
 		return nil;
 	}
 	
@@ -118,14 +117,12 @@
 {
 	if (element == nil)
 	{
-		[super dealloc];
 		return nil;
 	}
 	
 	xmlDocPtr doc = xmlNewDoc((const xmlChar *)"1.0");
 	if (doc == NULL)
 	{
-		[super dealloc];
 		return nil;
 	}
 	
@@ -228,7 +225,6 @@ int is_valid(const xmlDocPtr doc, const char *schema_filename)
 {
 	// libxml2 doesn't seem to like xsi:schemaLocation in the root element. We detach it from the node during validation.
 	DDXMLAttributeNode *schemaLocation = (DDXMLAttributeNode*)[[self rootElement] attributeForName:@"xsi:schemaLocation"];
-	[[schemaLocation retain] autorelease];
 	[schemaLocation detach];
 	NSArray *pairs = [[schemaLocation stringValue] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	const char *schema_filename = NULL;
